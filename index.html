@@ -6,10 +6,16 @@
 		<title>Ems, rems, and flexible interfaces Demo</title>
 		
 		<style>
+			/*html{
+				font-size:10px;
+			}*/
+			*{
+				box-sizing:border-box;
+			}
 			body{
 				background: #f1f1f1;
 				font-family: Arial, Helvetica, sans-serif;
-				font-size: 1rem;
+/*				font-size: 1rem;*/
 				line-height: 1.5;
 			}
 			main{
@@ -23,8 +29,14 @@
 				flex-direction: row;
 				justify-content: space-between;
 			}
+			.demo-links a{
+				margin-left:1em;
+			}
 			p{
-				margin: 0px;
+				margin:0;
+			}
+			details{
+				margin: 1em 0;
 			}
 			.flexfields{
 				display: flex;
@@ -93,6 +105,11 @@
 	<body>
 		<main>
 			<h1>Ems & Rems Demo</h1>
+			<details>
+				<summary>Instructions</summary>
+				<p>Enter font-size units in px or em to see how the parent/child inheritence and font-size calculation changes between units. Submitting a font-size in px for the html element replicates modifications in the user agent preferences. Remember to include your units such as "5em" in the form fields.</p>
+			</details>
+			
 			<section aria-label="font size experiments">
 				<form id="sizeChange">
 					<label><input name="heightWidthOn" type="checkbox"> Show computed width & height</label>
@@ -103,21 +120,21 @@
 						</fieldset>
 						<fieldset>
 							<legend>#parent</legend>
-							<label>font-size<input type="text" name="parentFont"></label>
+							<label>font-size<input type="text" name="parentFont" value="1rem"></label>
 							<label>width<input type="text" name="parentWidth"></label>
 							<label>height<input type="text" name="parentHeight"></label>
 						</fieldset>
 
 						<fieldset>
 							<legend>#child</legend>
-							<label>font-size<input type="text" name="childFont"></label>
+							<label>font-size<input type="text" name="childFont" value="2em"></label>
 							<label>width<input type="text" name="childWidth"></label>
 							<label>height<input type="text" name="childHeight"></label>
 						</fieldset>
 
 						<fieldset>
 							<legend>#grandchild</legend>
-							<label>font-size<input type="text" name="gchildFont"></label>
+							<label>font-size<input type="text" name="gchildFont" value="1em"></label>
 							<label>width<input type="text" name="gchildWidth"></label>
 							<label>height<input type="text" name="gchildHeight"></label>
 						</fieldset>
@@ -160,7 +177,13 @@
 
 
 		<footer>
-			<p>Built by <strong>Christina Adams</strong> &copy; 2022</p>
+			<p>Built by <a href="https://offsetchris.com" target="_blank"><strong>Christina Adams</strong>
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 50 50">
+					<title>Opens in a new window</title>
+					<path fill="#333" d="M9.375 3.125v37.5h37.5v-37.5h-37.5zM43.75 37.5h-31.25v-31.25h31.25v31.25zM6.25 43.75v-32.813l-3.125-3.125v39.063h39.063l-3.125-3.125h-32.813z"></path>
+					<path fill="#333" d="M17.188 12.5l7.813 7.813-9.375 9.375 4.688 4.688 9.375-9.375 7.813 7.813v-20.313z"></path>
+				</svg>
+			</a></p>
 			<div class="logo_si">
 				<?xml version="1.0" encoding="utf-8"?>
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -200,6 +223,13 @@
 					</g>
 				</svg>
 			</div>
+			<div class="demo-links">
+				<a href="/index.html">Ems Rems Demo</a>
+				<a href="/breakpoints.html">Breakpoints demo</a>
+				<a href="/fixednav.html">Fixed stuff demo</a>	
+				<a href="/margins.html">Margins demo</a>	
+			</div>
+			
 		</footer>
 
 		<script>
@@ -207,7 +237,7 @@
 			function getWindowSize(){
 				console.group("%cResize Event", "color:red");
 				console.log("Window layout viewport width:", window.innerWidth);
-				console.log("Pixel density:", window.devicePixelRatio);
+				// console.log("Pixel density:", window.devicePixelRatio);
 				console.groupEnd();
 				// Big thank you to https://www.bennadel.com/blog/3811-looking-at-how-browser-zoom-affects-css-media-queries-and-pixel-density.htm for this concept
 			}
